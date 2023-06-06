@@ -46,8 +46,12 @@ ApplicationWindow {
         anchors.fill: parent
         currentIndex: mainTabBar.currentIndex
         y: mainTabBar.height
+
+        SpendMoney {
+            anchors.fill: parent
+        }
+
         Item {
-            id: spend
             Text {
                 text: "Entering money to spend"
                 font.pointSize: 15
@@ -56,18 +60,9 @@ ApplicationWindow {
             }
         }
         Item {
-            id: spent
+            id: graph
             Text {
-                text: "History of money spent"
-                font.pointSize: 15
-                y: parent.height / 3
-                anchors.horizontalCenter: parent.horizontalCenter
-            }
-        }
-        Item {
-            id: whireBoard
-            Text {
-                text: "Just a casual white board"
+                text: "Just a casual graphics of the money spent"
                 font.pointSize: 15
                 y: parent.height / 3
                 anchors.horizontalCenter: parent.horizontalCenter

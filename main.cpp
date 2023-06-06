@@ -5,7 +5,9 @@
 
 int main(int argc, char *argv[])
 {
-    qputenv("QT_IM_MODULE", QByteArray("qtvirtualkeyboard"));
+    #ifndef WIN32
+        qputenv("QT_IM_MODULE", QByteArray("qtvirtualkeyboard"));
+    #endif
 
     QGuiApplication app(argc, argv);
 

@@ -18,7 +18,7 @@ qt_add_executable(appSeeMoneySpending
 qt_add_qml_module(appSeeMoneySpending
     URI SeeMoneySpending
     VERSION 1.0
-    QML_FILES main.qml 
+    QML_FILES main.qml SpendMoney.qml
 )
 
 set_target_properties(appSeeMoneySpending PROPERTIES
@@ -35,3 +35,5 @@ target_link_libraries(appSeeMoneySpending
 install(TARGETS appSeeMoneySpending
     BUNDLE DESTINATION .
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+
+
