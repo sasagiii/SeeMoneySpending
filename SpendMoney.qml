@@ -1,5 +1,6 @@
 import QtQuick
 import QtQuick.Controls 2.15
+import QtQuick 2.0
 
 Rectangle {
     id: spendMoney
@@ -18,7 +19,7 @@ Rectangle {
             width: 300
             anchors.left: parent.left
             clip: true
-            TextEdit {
+            TextInput {
                 id: textInput
                 property string standardText: "Enter value"
                 text: standardText
@@ -36,6 +37,9 @@ Rectangle {
                         textInput.text = ""
                     else if ("" == textInput.text)
                         textInput.text = textInput.standardText
+                }
+                validator: RegularExpressionValidator {
+                    regularExpression: /[0-9]+[\\.][0-9]+/
                 }
             }
         }
