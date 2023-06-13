@@ -13,6 +13,7 @@ qt_add_executable(appSeeMoneySpending
     main.cpp
     ${app_icon_resource_windows}
     images.qrc
+    datamanager.h datamanager.cpp
 )
 
 qt_add_qml_module(appSeeMoneySpending

@@ -53,7 +53,8 @@ ApplicationWindow {
 
         Item {
             Text {
-                text: "Entering money to spend"
+                //text: "Entering money to spend"
+                text: dataManager.moneySpentByDate
                 font.pointSize: 15
                 y: parent.height / 3
                 anchors.horizontalCenter: parent.horizontalCenter

@@ -61,6 +61,10 @@ Rectangle {
             }
             visible: (textInput.text !== ""
                       && textInput.text !== textInput.standardText)
+            onClicked: {
+                dataManager.saveData(textInput.text)
+                textInput.text = textInput.standardText
+            }
         }
     }
 }
