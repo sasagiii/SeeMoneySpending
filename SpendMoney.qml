@@ -30,17 +30,18 @@ Rectangle {
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.verticalCenter: parent.verticalCenter
                 Keys.onEnterPressed: {
-                    textInput.focus = false
+                    spentButton.clicked()
                 }
                 onFocusChanged: {
-                    if (textInput.standardText == textInput.text)
+                    if (textInput.standardText === textInput.text)
                         textInput.text = ""
-                    else if ("" == textInput.text)
+                    else if ("" === textInput.text)
                         textInput.text = textInput.standardText
                 }
                 validator: RegularExpressionValidator {
                     regularExpression: /[0-9]+[\\.][0-9]+/
                 }
+                inputMethodHints: Qt.ImhDigitsOnly
             }
         }
         Text {
@@ -52,6 +53,7 @@ Rectangle {
             anchors.leftMargin: 2
         }
         RoundButton {
+            id: spentButton
             text: qsTr("Spend")
             font.pixelSize: textInput.font.pixelSize
             y: textInputBorder.height + 16
@@ -62,7 +64,8 @@ Rectangle {
             visible: (textInput.text !== ""
                       && textInput.text !== textInput.standardText)
             onClicked: {
-                dataManager.saveData(textInput.text)
+                dataManager.addData(textInput.text)
+                textInput.focus = false
                 textInput.text = textInput.standardText
             }
         }

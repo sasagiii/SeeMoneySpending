@@ -47,13 +47,10 @@ ApplicationWindow {
         currentIndex: mainTabBar.currentIndex
         y: mainTabBar.height
 
-        SpendMoney {
-            anchors.fill: parent
-        }
+        SpendMoney {}
 
         Item {
             Text {
-                //text: "Entering money to spend"
                 text: dataManager.moneySpentByDate
                 font.pointSize: 15
                 y: parent.height / 3
