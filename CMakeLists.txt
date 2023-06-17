@@ -19,7 +19,7 @@ qt_add_executable(appSeeMoneySpending
 qt_add_qml_module(appSeeMoneySpending
     URI SeeMoneySpending
     VERSION 1.0
-    QML_FILES main.qml SpendMoney.qml
+    QML_FILES main.qml SpendMoney.qml MoneyHistoryDisplay.qml MoneyListModel.qml
 )
 
 set_target_properties(appSeeMoneySpending PROPERTIES

@@ -3,28 +3,30 @@
 
 #include <QDateTime>
 #include <QObject>
+#include <QQmlApplicationEngine>
 #include <QString>
 
 class DataManager : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(QString moneySpentByDate READ moneySpentByDate WRITE setMoneySpentByDate NOTIFY
-                   moneySpentByDateChanged)
 public:
     ~DataManager();
-    DataManager();
+    DataManager(QQmlApplicationEngine *engine);
     QString moneySpentByDate() const;
     void setMoneySpentByDate(const QString &moneySpent);
+    Q_INVOKABLE QStringList moneySpentHistory();
 
 signals:
-    void moneySpentByDateChanged(QString moneySpent);
+    void moneySpentByDateAdded(QString moneySpent);
 
 public slots:
     void addData(const QString &value);
 
 private:
-    QMap<QDateTime, QString> m_valueSpentToDate;
-    QString m_moneySpentByDate;
+    QMap<QDateTime, QString> m_valueSpentByDate;
+    QStringList m_moneySpentByDate;
+
+    QQmlApplicationEngine *m_engine = nullptr;
 };
 
 #endif // DATAMANAGER_H

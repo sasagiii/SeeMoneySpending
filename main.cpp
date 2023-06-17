@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
     const QUrl url(u"qrc:/SeeMoneySpending/main.qml"_qs);
     // load context
-    DataManager dataManager;
+    DataManager dataManager(&engine);
     engine.rootContext()->setContextProperty("dataManager", &dataManager);
 
     QObject::connect(

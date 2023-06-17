@@ -4,7 +4,18 @@ import QtQuick 2.0
 
 Rectangle {
     id: spendMoney
+    gradient: Gradient {
+        GradientStop {
+            position: 0.0
+            color: "lightsteelblue"
+        }
+        GradientStop {
+            position: 1.0
+            color: "steelblue"
+        }
+    }
     Rectangle {
+        color: "transparent"
         y: parent.height / 6
         anchors.horizontalCenter: parent.horizontalCenter
         height: childrenRect.height

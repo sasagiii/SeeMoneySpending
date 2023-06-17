@@ -27,7 +27,7 @@ ApplicationWindow {
                 width: implicitWidth
             }
             TabButton {
-                text: qsTr("White board")
+                text: qsTr("Graph")
                 font.pointSize: 15
                 width: implicitWidth
             }
@@ -49,14 +49,8 @@ ApplicationWindow {
 
         SpendMoney {}
 
-        Item {
-            Text {
-                text: dataManager.moneySpentByDate
-                font.pointSize: 15
-                y: parent.height / 3
-                anchors.horizontalCenter: parent.horizontalCenter
-            }
-        }
+        MoneyHistoryDisplay {}
+
         Item {
             id: graph
             Text {
