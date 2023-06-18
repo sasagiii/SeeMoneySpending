@@ -24,7 +24,7 @@ DataManager::DataManager(QQmlApplicationEngine *engine)
 
     // creating the displayed version of the datas
     for (auto it = m_valueSpentByDate.cbegin(); it != m_valueSpentByDate.cend(); ++it)
-        m_moneySpentByDate << it.key().toString("dd.MM.yyyy hh:mm:ss.z") + ";" + it.value();
+        m_moneySpentByDate << it.key().toString("dd.MM.yyyy hh:mm") + ";" + it.value();
 }
 
 void DataManager::addData(const QString &value)
@@ -33,7 +33,7 @@ void DataManager::addData(const QString &value)
         return;
     QDateTime currentDate = QDateTime::currentDateTime();
     m_valueSpentByDate.insert(currentDate, value);
-    QString addedValueByDate = currentDate.toString("dd.MM.yyyy hh:mm:ss.z") + ";" + value + "\n";
+    QString addedValueByDate = currentDate.toString("dd.MM.yyyy hh:mm") + ";" + value;
     m_moneySpentByDate << addedValueByDate;
 
     emit moneySpentByDateAdded(addedValueByDate);

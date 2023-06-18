@@ -1,5 +1,5 @@
-import QtQuick 2.0
-import QtQml
+import QtQuick
+import QtQuick.Controls
 
 Rectangle {
     gradient: Gradient {
@@ -13,11 +13,20 @@ Rectangle {
         }
     }
 
+    Connections {
+        target: dataManager
+        function onMoneySpentByDateAdded(moneySpent) {
+            moneyListModel.addElement(moneySpent)
+        }
+    }
+
     ListView {
         id: listView
         anchors.fill: parent
         topMargin: 7
-        model: MoneyListModel {}
+        model: MoneyListModel {
+            id: moneyListModel
+        }
         delegate: contactDelegate
         focus: true
         spacing: 7
@@ -25,7 +34,7 @@ Rectangle {
     Component {
         id: contactDelegate
         Rectangle {
-            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.horizontalCenter: parent ? parent.horizontalCenter : undefined
             width: listView.width - 20
             height: 80
             border.color: "blue"

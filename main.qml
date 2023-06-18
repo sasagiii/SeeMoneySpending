@@ -51,14 +51,7 @@ ApplicationWindow {
 
         MoneyHistoryDisplay {}
 
-        Item {
-            id: graph
-            Text {
-                text: "Just a casual graphics of the money spent"
-                font.pointSize: 15
-                y: parent.height / 3
-                anchors.horizontalCenter: parent.horizontalCenter
-            }
-        }
+        SpendingGraph{}
+
     }
 }
