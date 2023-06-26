@@ -8,7 +8,7 @@
 DataManager::DataManager(QQmlApplicationEngine *engine)
     : m_engine(engine)
 {
-    qRegisterMetaType<QMap<QDateTime, QString>>("QMap<QDateTime, QString>");
+    qRegisterMetaType<QMap<QString, QString>>("QMap<QDateTime, QString>");
     QString appDataLocation = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation)
                               + "/saves.sms";
     QFile file(appDataLocation);
@@ -20,11 +20,11 @@ DataManager::DataManager(QQmlApplicationEngine *engine)
     } else {
         qDebug() << "Could not read dataArrays";
     }
-    m_valueSpentByDate = variant.value<QMap<QDateTime, QString>>();
+    m_valueSpentByDate = variant.value<QMap<QString, QString>>();
 
     // creating the displayed version of the datas
     for (auto it = m_valueSpentByDate.cbegin(); it != m_valueSpentByDate.cend(); ++it)
-        m_moneySpentByDate << it.key().toString("dd.MM.yyyy hh:mm") + ";" + it.value();
+        m_moneySpentByDate.append(it.key() + ";" + it.value());
 }
 
 void DataManager::addData(const QString &value)
@@ -32,11 +32,19 @@ void DataManager::addData(const QString &value)
     if (value.isEmpty())
         return;
     QDateTime currentDate = QDateTime::currentDateTime();
-    m_valueSpentByDate.insert(currentDate, value);
+    m_valueSpentByDate.insert(currentDate.toString("dd.MM.yyyy hh:mm:ss"), value);
     QString addedValueByDate = currentDate.toString("dd.MM.yyyy hh:mm") + ";" + value;
-    m_moneySpentByDate << addedValueByDate;
+    m_moneySpentByDate.append(addedValueByDate);
 
     emit moneySpentByDateAdded(addedValueByDate);
+}
+
+void DataManager::removeData(const QString &dateTime, int index)
+{
+    if (!m_valueSpentByDate.contains(dateTime))
+        return;
+    m_valueSpentByDate.remove(dateTime);
+    emit spendingRemoved(index);
 }
 
 DataManager::~DataManager()

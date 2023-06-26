@@ -19,6 +19,12 @@ Rectangle {
             moneyListModel.addElement(moneySpent)
         }
     }
+    Connections {
+        target: dataManager
+        function onSpendingRemoved(index) {
+            moneyListModel.removeElement(index)
+        }
+    }
 
     ListView {
         id: listView
@@ -50,11 +56,27 @@ Rectangle {
                 color: "#7B241C"
             }
             Text {
+                id: dateTime
                 x: parent.width - width - 7
                 anchors.verticalCenter: parent.verticalCenter
                 font.pixelSize: 17
                 text: date
                 color: "gray"
+            }
+            RoundButton {
+                id: deleteButton
+                width: 25
+                height: 25
+                x: parent.width - width - 4
+                y: 4
+                palette {
+                    button: "#7B241C"
+                }
+                icon.color: "transparent"
+                icon.source: "qrc:/ressources/trash-can-regular.svg"
+                onClicked: {
+                    dataManager.removeData(dateTime.text, index)
+                }
             }
         }
     }

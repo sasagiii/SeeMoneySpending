@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>ressources/moneyIcon.ico</file>
+        <file>ressources/trash-can-regular.svg</file>
     </qresource>
 </RCC>

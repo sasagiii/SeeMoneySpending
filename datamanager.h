@@ -18,12 +18,14 @@ public:
 
 signals:
     void moneySpentByDateAdded(QString moneySpent);
+    void spendingRemoved(int index);
 
 public slots:
     void addData(const QString &value);
+    void removeData(const QString &dateTime, int index);
 
 private:
-    QMap<QDateTime, QString> m_valueSpentByDate;
+    QMap<QString, QString> m_valueSpentByDate; // <dateTime, amount>
     QStringList m_moneySpentByDate;
 
     QQmlApplicationEngine *m_engine = nullptr;

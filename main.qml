@@ -10,7 +10,6 @@ ApplicationWindow {
     width: 800
     height: 600
     title: qsTr("Spending Money")
-
     header: ToolBar {
         TabBar {
             id: mainTabBar
@@ -35,6 +34,7 @@ ApplicationWindow {
         RoundButton {
             text: qsTr("Exit")
             font.pointSize: 15
+            Material.background: "#7B241C"
             width: implicitWidth
             height: parent.height
             anchors.right: parent.right
@@ -51,7 +51,6 @@ ApplicationWindow {
 
         MoneyHistoryDisplay {}
 
-        SpendingGraph{}
-
+        SpendingGraph {}
     }
 }

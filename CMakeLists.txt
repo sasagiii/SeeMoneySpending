@@ -8,6 +8,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(app_icon_resource_windows "ressources/images.rc")
 
 find_package(Qt6 6.2 COMPONENTS Quick REQUIRED)
+set(CMAKE_AUTORCC ON)
 
 qt_add_executable(appSeeMoneySpending
     main.cpp

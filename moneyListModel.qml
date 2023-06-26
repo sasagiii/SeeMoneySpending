@@ -14,9 +14,12 @@ ListModel {
         var splitStrings = dateAndAmount.split(";")
         var date = splitStrings[0]
         var amount = splitStrings[1]
-        append({
+        insert(0, {
                    "amont": amount,
                    "date": date
                })
+    }
+    function removeElement(index) {
+        remove(index)
     }
 }
