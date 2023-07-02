@@ -97,15 +97,15 @@ Rectangle {
                     }
                 }
             }
-            Rectangle {
-                color: "transparent"
-                Layout.fillWidth: true
-                Layout.fillHeight: true
-                Text {
-                    anchors.centerIn: parent
-                    text: "Filtering options in coming here"
-                    font.bold: true
-                }
+        }
+        Rectangle {
+            color: "transparent"
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+            Text {
+                anchors.centerIn: parent
+                text: "Filtering options in coming here"
+                font.bold: true
             }
         }
     }
