@@ -1,10 +1,10 @@
-#include <QGuiApplication>
+#include <QApplication>
 #include <QIcon>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 
+#include "GraphDesignHelper.h"
 #include "datamanager.h"
-
 
 int main(int argc, char *argv[])
 {
@@ -12,13 +12,15 @@ int main(int argc, char *argv[])
     qputenv("QT_IM_MODULE", QByteArray("qtvirtualkeyboard"));
 #endif
 
-    QGuiApplication app(argc, argv);
+    QApplication app(argc, argv);
 
     QQmlApplicationEngine engine;
     const QUrl url(u"qrc:/SeeMoneySpending/main.qml"_qs);
     // load context
     DataManager dataManager(&engine);
+    GraphDesignHelper graphDesignHelper;
     engine.rootContext()->setContextProperty("dataManager", &dataManager);
+    engine.rootContext()->setContextProperty("graphDesignHelper", &graphDesignHelper);
 
     QObject::connect(
         &engine,

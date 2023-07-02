@@ -7,14 +7,15 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(app_icon_resource_windows "ressources/images.rc")
 
-find_package(Qt6 6.2 COMPONENTS Quick REQUIRED)
+find_package(Qt6 6.2 COMPONENTS Quick REQUIRED Widgets Charts)
+
 set(CMAKE_AUTORCC ON)
 
 qt_add_executable(appSeeMoneySpending
     main.cpp
     ${app_icon_resource_windows}
     images.qrc
-    datamanager.h datamanager.cpp
+    datamanager.h datamanager.cpp GraphDesignHelper.h
 )
 
 qt_add_qml_module(appSeeMoneySpending
@@ -32,7 +33,7 @@ set_target_properties(appSeeMoneySpending PROPERTIES
 )
 
 target_link_libraries(appSeeMoneySpending
-    PRIVATE Qt6::Quick)
+    PRIVATE Qt6::Quick Qt6::Widgets Qt6::Charts)
 
 install(TARGETS appSeeMoneySpending
     BUNDLE DESTINATION .
