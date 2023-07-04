@@ -36,64 +36,76 @@ Rectangle {
                 backgroundColor: 'transparent'
                 title: "2023"
                 legend.visible: false
-                Component.onCompleted: {
+                function setupChart() {
                     graphDesignHelper.update_chart(chartView)
                     graphDesignHelper.update_axes(chartView.axisX(),
                                                   chartView.axisY())
                 }
+                Component.onCompleted: {
+                    setupChart()
+                }
+                Connections {
+                    target: dataManager
+                    function onMoneySpentByDateAdded(moneySpent) {
+                        chartView.setupChart()
+                    }
+                }
+                Connections {
+                    target: dataManager
+                    function onSpendingRemoved(index) {
+                        chartView.setupChart()
+                    }
+                }
                 LineSeries {
                     id: lineSeries
                     axisX: CategoryAxis {
+                        id: axX
                         min: 0
-                        max: 12 * 30
-                        CategoryRange {
-                            label: "Jan"
-                            endValue: 30
-                        }
-                        CategoryRange {
-                            label: "Feb"
-                            endValue: 2 * 30
-                        }
-                        CategoryRange {
-                            label: "Mar"
-                            endValue: 3 * 30
-                        }
-                        CategoryRange {
-                            label: "Apr"
-                            endValue: 4 * 30
-                        }
-                        CategoryRange {
-                            label: "Mai"
-                            endValue: 5 * 30
-                        }
-                        CategoryRange {
-                            label: "Jun"
-                            endValue: 6 * 30
-                        }
-                        CategoryRange {
-                            label: "Jul"
-                            endValue: 7 * 30
-                        }
-                        CategoryRange {
-                            label: "Aug"
-                            endValue: 8 * 30
-                        }
-                        CategoryRange {
-                            label: "Sep"
-                            endValue: 9 * 30
-                        }
-                        CategoryRange {
-                            label: "Oct"
-                            endValue: 10 * 30
-                        }
-                        CategoryRange {
-                            label: "Nov"
-                            endValue: 11 * 30
-                        }
-                        CategoryRange {
-                            label: "Dec"
-                            endValue: 12 * 30
-                        }
+                        max: 365
+                    }
+                    property var monthRanges: [{
+                            "label": "Jan",
+                            "days": 31
+                        }, {
+                            "label": "Feb",
+                            "days": 28
+                        }, {
+                            "label": "Mar",
+                            "days": 31
+                        }, {
+                            "label": "Apr",
+                            "days": 30
+                        }, {
+                            "label": "May",
+                            "days": 31
+                        }, {
+                            "label": "Jun",
+                            "days": 30
+                        }, {
+                            "label": "Jul",
+                            "days": 31
+                        }, {
+                            "label": "Aug",
+                            "days": 31
+                        }, {
+                            "label": "Sep",
+                            "days": 30
+                        }, {
+                            "label": "Oct",
+                            "days": 31
+                        }, {
+                            "label": "Nov",
+                            "days": 30
+                        }, {
+                            "label": "Dec",
+                            "days": 31
+                        }]
+                    Component.onCompleted: {
+                        var endValue = 0
+                        monthRanges.map(function (monthRange) {
+                            endValue += monthRange.days
+                            axX.append(monthRange.label, endValue)
+                        })
                     }
                 }
             }

@@ -15,6 +15,7 @@ public:
     QString moneySpentByDate() const;
     void setMoneySpentByDate(const QString &moneySpent);
     Q_INVOKABLE QStringList moneySpentHistory();
+    QMap<double, double> moneySpentByday() const;
 
 signals:
     void moneySpentByDateAdded(QString moneySpent);

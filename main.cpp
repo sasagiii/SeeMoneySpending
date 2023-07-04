@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
     const QUrl url(u"qrc:/SeeMoneySpending/main.qml"_qs);
     // load context
     DataManager dataManager(&engine);
-    GraphDesignHelper graphDesignHelper;
+    GraphDesignHelper graphDesignHelper(&dataManager);
     engine.rootContext()->setContextProperty("dataManager", &dataManager);
     engine.rootContext()->setContextProperty("graphDesignHelper", &graphDesignHelper);
 

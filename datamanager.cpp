@@ -67,3 +67,19 @@ QStringList DataManager::moneySpentHistory()
 {
     return m_moneySpentByDate;
 }
+
+QMap<double, double> DataManager::moneySpentByday() const
+{
+    QMap<double, double> result;
+    for (auto it = m_valueSpentByDate.cbegin(); it != m_valueSpentByDate.cend(); ++it) {
+        QString fullDate = it.key();
+        fullDate = fullDate.split(" ").first();
+        QStringList dateDetails = fullDate.split(".");
+        QDate date(dateDetails.last().toInt(),
+                   dateDetails.at(1).toInt(),
+                   dateDetails.first().toInt());
+        double dayOfYear = date.dayOfYear();
+        result[dayOfYear] += it.value().toDouble();
+    }
+    return result;
+}
