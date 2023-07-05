@@ -34,7 +34,6 @@ Rectangle {
                 anchors.fill: parent
                 antialiasing: true
                 backgroundColor: 'transparent'
-                title: "2023"
                 legend.visible: false
                 function setupChart() {
                     graphDesignHelper.update_chart(chartView)
