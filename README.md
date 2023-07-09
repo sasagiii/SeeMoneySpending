@@ -9,14 +9,14 @@ SeeMoneySpending enables users to record their cash transactions, view a list of
 
 Expense Tracking: SeeMoneySpending allows users to easily record cash transactions. Users can input the date, amount, and a brief description for each expense, ensuring accurate tracking of spending.
 
-![Tab1](Images/tab1.png)
-![Tab1bis](Images/tab1bis.png)
+![Tab1](images/tab1.png)
+![Tab1bis](images/tab1bis.png)
 
 
 Money Spent Tab: In the Money Spent tab, users can view a comprehensive list of recorded expenses, including the date and amount spent. This feature provides an overview of spending history.
 
-![Tab2](Images/tab2.png)
+![Tab2](images/tab2.png)
 
 Yearly Spending Graph: SeeMoneySpending offers a graphical representation of yearly spending patterns. The Yearly Spending Graph tab allows users to visualize their expenses by day, helping identify trends and patterns over time.
 
-![Tab3](Images/tab3.png)
+![Tab3](images/tab3.png)
